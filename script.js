@@ -36,7 +36,7 @@ function register(){
   showLogin();
 }
 
-/* MÜŞTERİ GİRİŞ */
+/* 🔥 MÜŞTERİ GİRİŞ (ASİL DEĞİŞEN YER) */
 function login(){
   let u = document.getElementById("logUser").value;
   let p = document.getElementById("logPass").value;
@@ -44,7 +44,8 @@ function login(){
   let ok = users.find(x => x.user === u && x.pass === p);
 
   if(ok){
-    alert("Giriş başarılı 🎉");
+    localStorage.setItem("activeUser", u); // 👈 kullanıcıyı hatırla
+    location.href = "customer.html";       // 👈 MÜŞTERİ SAYFASINA GİT
   }else{
     alert("Kullanıcı adı veya şifre yanlış");
   }
