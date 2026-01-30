@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Müşteri Giriş</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Müşteri Girişi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+
+<div class="box">
+  <h2>Müşteri Girişi</h2>
+
+  <input id="logUser" placeholder="Kullanıcı Adı">
+  <input id="logPass" type="password" placeholder="Şifre">
+
+  <button onclick="login()">Giriş</button>
+
+  <a href="register.html">Kayıt Ol</a>
+  <a href="reset.html">Şifremi Unuttum</a>
+</div>
+
 <!-- YÖNETİM GİRİŞ BUTONU -->
-<div class="admin-entry">
-  <button onclick="location.href='admin.html'">
-  <!-- YÖNETİM GİRİŞ BUTONU -->
 <div class="admin-entry">
   <button onclick="location.href='admin.html'">
     ⚡ YÖNETİM GİRİŞİ ⚡
   </button>
-</div>
-  <body>
-
-<div class="box">
-  <h2>Müşteri Girişi</h2>
-  <input id="logUser" placeholder="Kullanıcı Adı">
-  <input id="logPass" type="password" placeholder="Şifre">
-  <button onclick="login()">Giriş</button>
-  <a href="register.html">Kayıt Ol</a>
-  <a href="reset.html">Şifremi Unuttum</a>
 </div>
 
 <script src="script.js"></script>
