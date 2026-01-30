@@ -56,9 +56,10 @@ a{
   margin-top:10px;
   color:#0ff;
   text-decoration:none;
+  cursor:pointer;
 }
 
-/* YÖNETİM GİRİŞ BUTONU */
+/* YÖNETİM GİRİŞ */
 .admin-entry{
   position:fixed;
   bottom:20px;
