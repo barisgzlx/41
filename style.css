@@ -34,8 +34,8 @@ input{
   border-radius:8px;
 }
 
+/* GENEL BUTON */
 button{
-  width:100%;
   padding:12px;
   margin-top:10px;
   background:#0ff;
@@ -55,7 +55,6 @@ a{
   display:block;
   margin-top:10px;
   color:#0ff;
-  cursor:pointer;
   text-decoration:none;
 }
 
@@ -67,29 +66,16 @@ a{
 }
 
 .admin-entry button{
-  width:auto;
-  padding:10px 18px;
-  background:black;
+  padding:6px 12px;
+  background:transparent;
   color:red;
-  border:2px solid red;
+  border:1px solid red;
+  font-size:13px;
   font-weight:bold;
   cursor:pointer;
-  box-shadow:0 0 10px red, 0 0 30px red;
+  box-shadow:0 0 6px red;
 }
 
 .admin-entry button:hover{
-  box-shadow:0 0 20px red, 0 0 60px red;
-}
-
-/* ADMIN PANEL */
-.admin-panel{
-  background:black;
-  color:red;
-  box-shadow:0 0 20px red, 0 0 60px red;
-}
-
-.post{
-  border:1px solid red;
-  padding:12px;
-  margin-bottom:10px;
+  box-shadow:0 0 15px red, 0 0 30px red;
 }
