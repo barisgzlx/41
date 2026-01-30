@@ -1,152 +1,172 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Panel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Müşteri & Admin Sistemi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{
+  margin:0;
+  min-height:100vh;
+  background:#0f0c29;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:#fff;
+}
+.hidden{display:none}
 
-    body {
-      margin: 0;
-      background: #f4f6f8;
-    }
+/* ORTA KUTU */
+.box{
+  max-width:420px;
+  margin:70px auto;
+  background:#111;
+  padding:25px;
+  border-radius:12px;
+}
 
-    .login-container, .panel {
-      max-width: 400px;
-      margin: 100px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
+/* BUTONLAR */
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+}
+input{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+}
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+/* MÜŞTERİ STİL */
+.customer-box{
+  background:linear-gradient(135deg,#00f260,#0575e6);
+}
+.customer-box h2{text-align:center}
+.customer-box button{background:#000;color:#0ff}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+/* ADMIN STİL */
+.admin-box{
+  background:#1c1c1c;
+  border:2px solid #555;
+}
+.admin-box h2{text-align:center}
+.admin-box button{background:#444;color:#fff}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #2c7be5;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #1a68d1;
-    }
-
-    .error {
-      color: red;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    /* Admin Panel */
-    .panel {
-      display: none;
-      max-width: 900px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .menu {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .menu div {
-      background: #e9ecef;
-      padding: 15px;
-      border-radius: 6px;
-      flex: 1;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .content {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 6px;
-    }
-  </style>
+/* PANELLER */
+.panel{
+  max-width:900px;
+  margin:40px auto;
+  background:#fff;
+  color:#000;
+  padding:20px;
+  border-radius:12px;
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+a{cursor:pointer;color:#0ff;font-weight:bold}
+</style>
 </head>
 <body>
 
-  <!-- LOGIN -->
-  <div class="login-container" id="loginBox">
-    <h2>Admin Giriş</h2>
-    <div class="error" id="error"></div>
-    <input type="text" id="username" placeholder="Kullanıcı Adı">
-    <input type="password" id="password" placeholder="Şifre">
-    <button onclick="login()">Giriş Yap</button>
+<!-- ANA SAYFA -->
+<div class="box">
+  <h2 style="text-align:center">Hoş Geldiniz</h2>
+  <button onclick="show('customerLogin')">Müşteri Girişi</button>
+  <button onclick="show('adminLogin')">Yönetim Girişi</button>
+</div>
+
+<!-- MÜŞTERİ GİRİŞ -->
+<div class="box customer-box hidden" id="customerLogin">
+  <h2>Müşteri Girişi</h2>
+  <input id="cUser" placeholder="Kullanıcı Adı">
+  <input id="cPass" type="password" placeholder="Şifre">
+  <button onclick="customerLogin()">Giriş Yap</button>
+  <a onclick="show('customerRegister')">Kayıt Ol</a>
+</div>
+
+<!-- MÜŞTERİ KAYIT -->
+<div class="box customer-box hidden" id="customerRegister">
+  <h2>Müşteri Kayıt</h2>
+  <input id="rUser" placeholder="Kullanıcı Adı">
+  <input id="rMail" placeholder="E-posta">
+  <input id="rPass" type="password" placeholder="Şifre">
+  <button onclick="register()">Kayıt Ol</button>
+  <a onclick="location.reload()">Ana Sayfa</a>
+</div>
+
+<!-- ADMIN GİRİŞ -->
+<div class="box admin-box hidden" id="adminLogin">
+  <h2>Yönetim Girişi</h2>
+  <input id="aUser" placeholder="Kullanıcı Adı">
+  <input id="aPass" type="password" placeholder="Şifre">
+  <button onclick="adminLogin()">Giriş</button>
+  <a onclick="location.reload()">Ana Sayfa</a>
+</div>
+
+<!-- MÜŞTERİ PANEL -->
+<div class="panel hidden" id="customerPanel">
+  <div class="top">
+    <h2>Müşteri Merkezi</h2>
+    <button onclick="logout()">Çıkış</button>
   </div>
+  <p>Hoş geldin <b id="cusName"></b></p>
+</div>
 
-  <!-- PANEL -->
-  <div class="panel" id="panel">
-    <div class="topbar">
-      <h2>Admin Panel</h2>
-      <button onclick="logout()" style="width:auto;">Çıkış</button>
-    </div>
-
-    <div class="menu">
-      <div>Dashboard</div>
-      <div>Kullanıcılar</div>
-      <div>Ayarlar</div>
-    </div>
-
-    <div class="content">
-      <h3>Hoş geldin 👋</h3>
-      <p>Burası admin paneli. Buraya istediğin içeriği ekleyebilirsin.</p>
-    </div>
+<!-- ADMIN PANEL -->
+<div class="panel hidden" id="adminPanel">
+  <div class="top">
+    <h2>Admin Paneli</h2>
+    <button onclick="logout()">Çıkış</button>
   </div>
+  <p>Yönetici olarak giriş yapıldı.</p>
+</div>
 
-  <script>
-    const adminUser = "admin";
-    const adminPass = "1234";
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let currentUser="";
 
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      const error = document.getElementById("error");
+function show(id){
+  document.querySelectorAll(".box,.panel").forEach(x=>x.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
 
-      if (user === adminUser && pass === adminPass) {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("panel").style.display = "block";
-      } else {
-        error.innerText = "Kullanıcı adı veya şifre yanlış";
-      }
-    }
+function register(){
+  users.push({
+    user:rUser.value,
+    mail:rMail.value,
+    pass:rPass.value
+  });
+  localStorage.setItem("users",JSON.stringify(users));
+  alert("Kayıt başarılı, giriş yapabilirsiniz");
+  location.reload();
+}
 
-    function logout() {
-      document.getElementById("panel").style.display = "none";
-      document.getElementById("loginBox").style.display = "block";
-      document.getElementById("error").innerText = "";
-    }
-  </script>
+function customerLogin(){
+  let u=cUser.value,p=cPass.value;
+  let ok=users.find(x=>x.user===u && x.pass===p);
+  if(ok){
+    currentUser=u;
+    document.querySelectorAll(".box").forEach(x=>x.classList.add("hidden"));
+    customerPanel.classList.remove("hidden");
+    cusName.innerText=u;
+  }else alert("Bilgiler yanlış");
+}
+
+function adminLogin(){
+  if(aUser.value==="barisguzel" && aPass.value==="baro1453"){
+    document.querySelectorAll(".box").forEach(x=>x.classList.add("hidden"));
+    adminPanel.classList.remove("hidden");
+  }else alert("Admin bilgileri hatalı");
+}
+
+function logout(){location.reload()}
+</script>
 
 </body>
 </html>
