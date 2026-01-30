@@ -37,7 +37,9 @@ function resetPass(){
 
 // ADMIN
 function adminLogin(){
-  if(aUser.value==="barisguzel" && aPass.value==="baro1453"){
-    location.href="admin.html?ok=1";
-  }else alert("Admin bilgileri hatalı");
+  if(aUser.value === "barisguzel" && aPass.value === "baro1453"){
+    location.href="admin-panel.html";
+  }else{
+    alert("Admin bilgileri hatalı");
+  }
 }
