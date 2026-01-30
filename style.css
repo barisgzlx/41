@@ -1,68 +1,95 @@
-*{box-sizing:border-box;font-family:Arial}
+*{
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
 body{
   margin:0;
   min-height:100vh;
-  background:#020024;
-  background:radial-gradient(circle at top,#0ff 0%,#020024 60%);
+  background:radial-gradient(circle at top,#00ffff 0%,#020024 60%);
   color:#fff;
 }
+
+/* ORTA KUTU */
 .box{
   max-width:420px;
   margin:80px auto;
   padding:30px;
   background:rgba(0,0,0,0.7);
   border-radius:15px;
-  box-shadow:0 0 20px #0ff;
   text-align:center;
+  box-shadow:0 0 20px #0ff, 0 0 50px #0ff;
 }
-h2{color:#0ff}
-input,button{
+
+.box h2{
+  color:#0ff;
+  text-shadow:0 0 10px #0ff;
+}
+
+input{
   width:100%;
   padding:12px;
   margin:8px 0;
-}
-button{
-  background:#0ff;
   border:none;
-  font-weight:bold;
-  cursor:pointer;
+  border-radius:8px;
 }
-a{color:#0ff;cursor:pointer;display:block;margin-top:10px}
 
-.admin{
-  background:#111;
-  box-shadow:none;
-  border:1px solid #444;
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#0ff;
+  color:#000;
+  font-weight:bold;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  box-shadow:0 0 15px #0ff;
 }
-.admin h2{color:#ccc}
+
+button:hover{
+  box-shadow:0 0 30px #0ff;
+}
+
+a{
+  display:block;
+  margin-top:10px;
+  color:#0ff;
+  cursor:pointer;
+  text-decoration:none;
+}
+
 /* YÖNETİM GİRİŞ BUTONU */
 .admin-entry{
   position:fixed;
   bottom:20px;
   left:20px;
 }
+
 .admin-entry button{
-  padding:12px 20px;
-  font-weight:bold;
+  width:auto;
+  padding:10px 18px;
   background:black;
   color:red;
   border:2px solid red;
+  font-weight:bold;
   cursor:pointer;
-  box-shadow:0 0 10px red,0 0 30px red;
+  box-shadow:0 0 10px red, 0 0 30px red;
 }
+
 .admin-entry button:hover{
-  box-shadow:0 0 20px red,0 0 60px red;
+  box-shadow:0 0 20px red, 0 0 60px red;
 }
 
 /* ADMIN PANEL */
 .admin-panel{
   background:black;
   color:red;
-  box-shadow:0 0 20px red,0 0 60px red;
-}
-.post{
-  border:1px solid red;
-  padding:15px;
-  margin-bottom:15px;
+  box-shadow:0 0 20px red, 0 0 60px red;
 }
 
+.post{
+  border:1px solid red;
+  padding:12px;
+  margin-bottom:10px;
+}
