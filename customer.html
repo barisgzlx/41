@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Müşteri Paneli</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Müşteri Merkezi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="box">
-  <h2>Müşteri Merkezi</h2>
-  <p>Hoş geldin 👋</p>
-  <button onclick="localStorage.clear();location.href='index.html'">Çıkış</button>
+  <h2>Hoş geldin <span id="userName"></span> 👋</h2>
+  <p>Burası senin müşteri sayfan.</p>
+
+  <button onclick="logout()">Çıkış Yap</button>
 </div>
+
+<script>
+  let u = localStorage.getItem("activeUser");
+  if(!u){
+    location.href="index.html";
+  }
+  document.getElementById("userName").innerText = u;
+
+  function logout(){
+    localStorage.removeItem("activeUser");
+    location.href="index.html";
+  }
+</script>
 
 </body>
 </html>
