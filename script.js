@@ -1,45 +1,48 @@
 let users = JSON.parse(localStorage.getItem("users")) || [];
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
-// KAYIT
-function register(){
-  let u = regUser.value;
-  let m = regMail.value;
-  let p = regPass.value;
-  if(!u||!m||!p){alert("Tüm alanlar dolu olmalı");return;}
-  users.push({user:u,mail:m,pass:p});
-  localStorage.setItem("users",JSON.stringify(users));
-  alert("Kayıt başarılı");
-  location.href="index.html";
-}
-
-// GİRİŞ
+/* MÜŞTERİ GİRİŞ */
 function login(){
-  let u = logUser.value;
-  let p = logPass.value;
-  let ok = users.find(x=>x.user===u && x.pass===p);
+  let u = document.getElementById("logUser").value;
+  let p = document.getElementById("logPass").value;
+
+  let ok = users.find(x => x.user === u && x.pass === p);
+
   if(ok){
-    localStorage.setItem("activeUser",u);
-    location.href="customer.html";
-  }else alert("Bilgiler yanlış");
+    alert("Müşteri girişi başarılı");
+    // müşteri paneli sonra eklenecek
+  }else{
+    alert("Kullanıcı adı veya şifre yanlış");
+  }
 }
 
-// ŞİFRE DEĞİŞTİR
-function resetPass(){
-  let u=rUser.value, m=rMail.value, p=rNewPass.value;
-  let user = users.find(x=>x.user===u && x.mail===m);
-  if(user){
-    user.pass=p;
-    localStorage.setItem("users",JSON.stringify(users));
-    alert("Şifre değişti");
-    location.href="index.html";
-  }else alert("Bilgiler eşleşmiyor");
-}
-
-// ADMIN
+/* ADMIN GİRİŞ */
 function adminLogin(){
-  if(aUser.value === "barisguzel" && aPass.value === "baro1453"){
-    location.href="admin-panel.html";
+  let u = document.getElementById("aUser").value;
+  let p = document.getElementById("aPass").value;
+
+  if(u === "barisguzel" && p === "baro1453"){
+    document.getElementById("adminLoginBox").style.display = "none";
+    document.getElementById("adminPanel").style.display = "block";
+    loadPosts();
   }else{
     alert("Admin bilgileri hatalı");
   }
+}
+
+/* ADMIN PAYLAŞIMLARI YÜKLE */
+function loadPosts(){
+  let list = document.getElementById("postList");
+  let html = "";
+
+  posts.forEach(p=>{
+    html += `
+      <div class="post">
+        <b>Kullanıcı:</b> ${p.user}<br>
+        <b>Söz:</b> ${p.text}
+      </div>
+    `;
+  });
+
+  list.innerHTML = html || "Henüz müşteri paylaşımı yok";
 }
