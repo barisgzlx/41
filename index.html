@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<div class="box">
+<!-- MÜŞTERİ GİRİŞ -->
+<div class="box" id="loginBox">
   <h2>Müşteri Girişi</h2>
 
   <input id="logUser" placeholder="Kullanıcı Adı">
@@ -15,22 +16,27 @@
 
   <button onclick="login()">Giriş</button>
 
-  <a href="#" onclick="showRegister()">Kayıt Ol</a>
-  <a href="#">Şifremi Unuttum</a>
+  <a href="javascript:void(0)" onclick="showRegister()">Kayıt Ol</a>
+  <a href="javascript:void(0)">Şifremi Unuttum</a>
 </div>
 
-<!-- KAYIT ALANI -->
+<!-- KAYIT OL -->
 <div class="box" id="registerBox" style="display:none">
   <h2>Kayıt Ol</h2>
+
   <input id="regUser" placeholder="Kullanıcı Adı">
   <input id="regMail" placeholder="E-posta">
   <input id="regPass" type="password" placeholder="Şifre">
+
   <button onclick="register()">Kaydı Tamamla</button>
+  <a href="javascript:void(0)" onclick="showLogin()">Geri Dön</a>
 </div>
 
-<!-- YÖNETİM -->
+<!-- YÖNETİM GİRİŞ BUTONU -->
 <div class="admin-entry">
-  <button onclick="location.href='admin.html'">⚡ YÖNETİM GİRİŞİ ⚡</button>
+  <button onclick="location.href='admin.html'">
+    ⚡ YÖNETİM GİRİŞİ ⚡
+  </button>
 </div>
 
 <script src="script.js"></script>
