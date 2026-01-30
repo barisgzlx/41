@@ -1,38 +1,51 @@
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-/* KAYIT GÖSTER */
+/* KAYIT FORMUNU AÇ */
 function showRegister(){
+  document.getElementById("loginBox").style.display = "none";
   document.getElementById("registerBox").style.display = "block";
+}
+
+/* GİRİŞ FORMUNA DÖN */
+function showLogin(){
+  document.getElementById("registerBox").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
 }
 
 /* KAYIT OL */
 function register(){
-  let u = regUser.value;
-  let m = regMail.value;
-  let p = regPass.value;
+  let u = document.getElementById("regUser").value;
+  let m = document.getElementById("regMail").value;
+  let p = document.getElementById("regPass").value;
 
   if(!u || !m || !p){
     alert("Tüm alanları doldur");
     return;
   }
 
+  let kontrol = users.find(x => x.user === u);
+  if(kontrol){
+    alert("Bu kullanıcı adı zaten var");
+    return;
+  }
+
   users.push({user:u, mail:m, pass:p});
   localStorage.setItem("users", JSON.stringify(users));
 
-  alert("Kayıt başarılı, giriş yapabilirsin");
-  document.getElementById("registerBox").style.display = "none";
+  alert("Kayıt başarılı, şimdi giriş yapabilirsin");
+  showLogin();
 }
 
 /* MÜŞTERİ GİRİŞ */
 function login(){
-  let u = logUser.value;
-  let p = logPass.value;
+  let u = document.getElementById("logUser").value;
+  let p = document.getElementById("logPass").value;
 
   let ok = users.find(x => x.user === u && x.pass === p);
 
   if(ok){
     alert("Giriş başarılı 🎉");
   }else{
-    alert("Hatalı kullanıcı adı veya şifre");
+    alert("Kullanıcı adı veya şifre yanlış");
   }
 }
