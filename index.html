@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6f8;
+    }
+
+    .login-container, .panel {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2c7be5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #1a68d1;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* Admin Panel */
+    .panel {
+      display: none;
+      max-width: 900px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .menu div {
+      background: #e9ecef;
+      padding: 15px;
+      border-radius: 6px;
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .content {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-container" id="loginBox">
+    <h2>Admin Giriş</h2>
+    <div class="error" id="error"></div>
+    <input type="text" id="username" placeholder="Kullanıcı Adı">
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="login()">Giriş Yap</button>
+  </div>
+
+  <!-- PANEL -->
+  <div class="panel" id="panel">
+    <div class="topbar">
+      <h2>Admin Panel</h2>
+      <button onclick="logout()" style="width:auto;">Çıkış</button>
+    </div>
+
+    <div class="menu">
+      <div>Dashboard</div>
+      <div>Kullanıcılar</div>
+      <div>Ayarlar</div>
+    </div>
+
+    <div class="content">
+      <h3>Hoş geldin 👋</h3>
+      <p>Burası admin paneli. Buraya istediğin içeriği ekleyebilirsin.</p>
+    </div>
+  </div>
+
+  <script>
+    const adminUser = "admin";
+    const adminPass = "1234";
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      if (user === adminUser && pass === adminPass) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("panel").style.display = "block";
+      } else {
+        error.innerText = "Kullanıcı adı veya şifre yanlış";
+      }
+    }
+
+    function logout() {
+      document.getElementById("panel").style.display = "none";
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("error").innerText = "";
+    }
+  </script>
+
+</body>
+</html>
