@@ -2,27 +2,24 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Yönetim</title>
-<link rel="stylesheet" href="style.css">
+<title>Admin</title>
 </head>
-<body>
+<body style="background:black;color:red;text-align:center">
 
-<!-- ADMIN GİRİŞ -->
-<div class="box admin" id="adminLoginBox">
-  <h2>⚡ Yönetim Girişi ⚡</h2>
-  <input id="aUser" placeholder="Kullanıcı Adı">
-  <input id="aPass" type="password" placeholder="Şifre">
-  <button onclick="adminLogin()">Giriş Yap</button>
-  <a href="index.html">Ana Sayfa</a>
-</div>
+<h2>⚡ Yönetim Girişi ⚡</h2>
+<input id="aUser" placeholder="Kullanıcı Adı"><br><br>
+<input id="aPass" type="password" placeholder="Şifre"><br><br>
+<button onclick="login()">Giriş</button>
 
-<!-- ADMIN PANEL (AYNI SAYFA) -->
-<div class="box admin-panel" id="adminPanel" style="display:none">
-  <h2>🔥 Admin Panosu 🔥</h2>
-  <div id="postList">Henüz veri yok</div>
-  <button onclick="logout()">Çıkış</button>
-</div>
+<script>
+function login(){
+  if(aUser.value==="barisguzel" && aPass.value==="baro1453"){
+    alert("Admin girişi başarılı");
+  }else{
+    alert("Admin bilgileri hatalı");
+  }
+}
+</script>
 
-<script src="script.js"></script>
 </body>
 </html>
