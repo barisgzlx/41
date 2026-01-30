@@ -1,18 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Yönetim Girişi</title>
+<title>Yönetim</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="box admin">
-  <h2>⚡ Admin Girişi ⚡</h2>
+<!-- ADMIN GİRİŞ -->
+<div class="box admin" id="adminLoginBox">
+  <h2>⚡ Yönetim Girişi ⚡</h2>
   <input id="aUser" placeholder="Kullanıcı Adı">
   <input id="aPass" type="password" placeholder="Şifre">
   <button onclick="adminLogin()">Giriş Yap</button>
   <a href="index.html">Ana Sayfa</a>
+</div>
+
+<!-- ADMIN PANEL (AYNI SAYFA) -->
+<div class="box admin-panel" id="adminPanel" style="display:none">
+  <h2>🔥 Admin Panosu 🔥</h2>
+  <div id="postList">Henüz veri yok</div>
+  <button onclick="logout()">Çıkış</button>
 </div>
 
 <script src="script.js"></script>
