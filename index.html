@@ -15,15 +15,22 @@
 
   <button onclick="login()">Giriş</button>
 
-  <a href="register.html">Kayıt Ol</a>
-  <a href="reset.html">Şifremi Unuttum</a>
+  <a href="#" onclick="showRegister()">Kayıt Ol</a>
+  <a href="#">Şifremi Unuttum</a>
 </div>
 
-<!-- YÖNETİM GİRİŞ BUTONU -->
+<!-- KAYIT ALANI -->
+<div class="box" id="registerBox" style="display:none">
+  <h2>Kayıt Ol</h2>
+  <input id="regUser" placeholder="Kullanıcı Adı">
+  <input id="regMail" placeholder="E-posta">
+  <input id="regPass" type="password" placeholder="Şifre">
+  <button onclick="register()">Kaydı Tamamla</button>
+</div>
+
+<!-- YÖNETİM -->
 <div class="admin-entry">
-  <button onclick="location.href='admin.html'">
-    ⚡ YÖNETİM GİRİŞİ ⚡
-  </button>
+  <button onclick="location.href='admin.html'">⚡ YÖNETİM GİRİŞİ ⚡</button>
 </div>
 
 <script src="script.js"></script>
