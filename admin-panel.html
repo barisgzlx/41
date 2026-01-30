@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Paneli</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box admin-panel">
+  <h2>🔥 ADMIN PANOSU 🔥</h2>
+  <div id="postList"></div>
+  <button onclick="logout()">Çıkış</button>
+</div>
+
+<script>
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+let html = "";
+posts.forEach((p,i)=>{
+  html += `
+    <div class="post">
+      <b>Kullanıcı:</b> ${p.user}<br>
+      <b>Söz:</b> ${p.text}
+    </div>
+  `;
+});
+document.getElementById("postList").innerHTML = html || "Henüz paylaşım yok";
+
+function logout(){
+  location.href="index.html";
+}
+</script>
+
+</body>
+</html>
